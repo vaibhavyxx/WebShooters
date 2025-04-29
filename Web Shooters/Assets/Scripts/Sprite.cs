@@ -17,4 +17,14 @@ public class Sprite : MonoBehaviour
     {
         
     }
+
+    //destroys itself if it collides with the web
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Web"))
+        {
+            Debug.Log("Collided with the web");
+            Destroy(this.gameObject);
+        }
+    }
 }

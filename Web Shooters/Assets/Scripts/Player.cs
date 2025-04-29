@@ -17,34 +17,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.inputManager.Tap >= 10)
+        if(Input.inputManager.Tap > 10)
         {
+            isTapped = true;
+            //ideally stays active for 2 seconds
+        }
+
+        if(isTapped )
+        {
+            currentTime += Time.deltaTime;
             web.SetActive(true);
+            if( currentTime > waitTime )
+            {
+                currentTime = 0;
+                isTapped=false;
+            }
         }
         else
         {
             web.SetActive(false);
         }
-        /*Debug.Log("From input manager: " + Input.inputManager.Tap);
-
-        if (Input.inputManager.Tap >= 10)
-        {
-            currentTime += Time.deltaTime;
-            isTapped = true;
-        }
-
-        if(isTapped && currentTime < waitTime)
-        {
-            web.SetActive(true);
-        }
-
-        //if it passes over 2 seconds, the object is hidden and is not tapped anymore
-       if(currentTime >= waitTime)
-        {
-            currentTime = 0.0f;
-            web.SetActive(false);
-            isTapped=false;
-        }*/
-
     }
 }

@@ -10,7 +10,7 @@ public class Input : MonoBehaviour
     public int baud = 9600;
     public GameObject spriteObject;
 
-    private string recievedString;
+    private string receivedString;
     private float tap;
 
     //Return tap value from piezo
@@ -47,8 +47,8 @@ public class Input : MonoBehaviour
         {
             if (dataStream.IsOpen)
             {
-                recievedString = dataStream.ReadLine();
-                tap = float.Parse(recievedString); 
+                receivedString = dataStream.ReadLine();
+                tap = float.Parse(receivedString); 
                 Debug.Log("tap: "+ tap);
             }
         }

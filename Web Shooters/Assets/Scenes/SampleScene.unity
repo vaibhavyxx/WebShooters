@@ -175,9 +175,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1457825081035216121, guid: c0c78b26c691ece4ba219e59755d6ad6, type: 3}
+      propertyPath: m_TagString
+      value: Web
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945056652587699746, guid: c0c78b26c691ece4ba219e59755d6ad6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8113462400916400231, guid: c0c78b26c691ece4ba219e59755d6ad6, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113462400916400231, guid: c0c78b26c691ece4ba219e59755d6ad6, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113462400916400231, guid: c0c78b26c691ece4ba219e59755d6ad6, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -101436757
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -251,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   web: {fileID: 24758407}
-  waitTime: 0.5
+  waitTime: 0.2
 --- !u!1 &282124553
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +639,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000ab32f4f9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
