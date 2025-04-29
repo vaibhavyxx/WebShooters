@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   web: {fileID: 24758407}
+  waitTime: 0.5
 --- !u!1 &282124553
 GameObject:
   m_ObjectHideFlags: 0
