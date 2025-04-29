@@ -17,6 +17,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.inputManager.Tap >= 10)
+        {
+            web.SetActive(true);
+        }
+        else
+        {
+            web.SetActive(false);
+        }
         /*Debug.Log("From input manager: " + Input.inputManager.Tap);
 
         if (Input.inputManager.Tap >= 10)
