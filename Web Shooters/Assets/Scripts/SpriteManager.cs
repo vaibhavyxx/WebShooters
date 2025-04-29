@@ -47,6 +47,6 @@ public class SpriteManager : MonoBehaviour
             spawnedItems.Add(spawned);
             Destroy(spawned, 5.0f);         //Long enough to be off camera to destroy itself
         }
-        
+        //Debug.Log("Load on tap: " + Input.inputManager.Tap);
     }
 }
