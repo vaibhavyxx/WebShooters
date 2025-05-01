@@ -3,7 +3,8 @@ using System.IO.Ports;
 
 public class Input : MonoBehaviour
 {
-    public static Input inputManager;
+    //This is a manager class so I wanted to make sure that there is one instance of it at all times
+    public static Input inputManager;           
     //To open Arduino port and do serial communication
     SerialPort dataStream;
     public string serialPort = "COM3";
@@ -13,7 +14,9 @@ public class Input : MonoBehaviour
     private string receivedString;
     private float tap;
 
-    //Return tap value from piezo
+    /// <summary>
+    /// Read-only to find the vibrations amount 
+    /// </summary>
     public float Tap
     {
         get { return tap; }
@@ -40,16 +43,17 @@ public class Input : MonoBehaviour
         dataStream.Open();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        //If data stream is open, it will parse the tap value into a float which the other
+        //classes can access it through Tap property
         try
         {
             if (dataStream.IsOpen)
             {
                 receivedString = dataStream.ReadLine();
                 tap = float.Parse(receivedString); 
-                Debug.Log("tap: "+ tap);
+                //Debug.Log("tap: "+ tap);
             }
         }
         catch (System.Exception error)

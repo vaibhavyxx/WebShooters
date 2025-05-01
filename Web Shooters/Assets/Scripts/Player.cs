@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject web;
-    float currentTime;
-    public float waitTime = 1.0f;
+    public GameObject web;              //Object you want to hide/show
+    float currentTime;                  //For display purposes
+    public float waitTime = 0.5f;       //Waiting period
     bool isTapped = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //Web is hidden in the start
     void Start()
     {
         web.SetActive(false);
@@ -17,13 +17,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.inputManager.Tap > 10)
+        //If any input tap is greater than 20, only then, display the web for x amount of seconds
+        //before hiding it again
+        if(Input.inputManager.Tap > 25)
         {
             isTapped = true;
-            //ideally stays active for 2 seconds
         }
 
-        if(isTapped )
+        //If it goes past the wait time, reset the current time and set isTapped to false
+        if(isTapped)
         {
             currentTime += Time.deltaTime;
             web.SetActive(true);

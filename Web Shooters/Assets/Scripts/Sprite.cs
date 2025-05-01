@@ -1,3 +1,4 @@
+//Attach it to the sprite to make sure it has a speed of x amount for movement
 using UnityEngine;
 
 public class Sprite : MonoBehaviour
@@ -5,20 +6,14 @@ public class Sprite : MonoBehaviour
     Rigidbody2D rigidbody;
     [SerializeField] Vector3 speed;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         rigidbody.linearVelocity = speed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    //destroys itself if it collides with the web
+    //destroys itself if it collides with the web -Has issues with it
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Web"))

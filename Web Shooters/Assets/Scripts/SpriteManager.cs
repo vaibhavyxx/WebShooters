@@ -1,4 +1,5 @@
-//Attach this script to spawn manager
+//Attach this script to spawn manager to ensure sprites are spawned every 'x' seconds
+//And are removed once they are off screen
 using System.Collections.Generic;
 using UnityEngine;
 
