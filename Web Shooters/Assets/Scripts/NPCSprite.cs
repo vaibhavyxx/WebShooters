@@ -20,14 +20,19 @@ public class NPCSprite : MonoBehaviour
     }
     private void Update()
     {
-        if(isWebbed)
+        if (isWebbed)
+        {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = webbedSprite;
+        }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Web"))
+        if (collision.CompareTag("Web"))
+        {
             isWebbed = true;
+            UI.uiManager.Score++;
+        }
     }
 
 }
