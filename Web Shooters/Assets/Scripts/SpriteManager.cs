@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class SpriteManager : MonoBehaviour
 {
+    //For camera and height
+    [SerializeField] Camera mainCamera;
+    public float heightThreshold;
+
     public Transform spawnTransform;
 
     //Sprites
@@ -34,19 +38,35 @@ public class SpriteManager : MonoBehaviour
     {
         spawnedItems = new List<GameObject>();
         currentTime = Time.time;
+        heightThreshold = mainCamera.orthographicSize + spawnPrefab.GetComponent<SpriteRenderer>().size.y;
     }
 
-    // For every 'x' amount of seconds, a sprite is spawned which is destroyed 5 seconds later
-    //This is hack for it to be long enough off the camera to destroy the object
     void Update()
     {
+        Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
+
+        //Destroys sprites if they are off-camera
+        for (int i = 0; i < spawnedItems.Count; i++)
+        {
+            if (spawnedItems[i].GetComponent<Transform>().position.y > heightThreshold)
+            {
+                GameObject temp = spawnedItems[i];
+                spawnedItems.RemoveAt(i);
+                Destroy(temp);
+            }
+        }
+
+        //Spawns sprites after every variable seconds
         currentTime += Time.deltaTime;
         if(currentTime>= waitTime)
         {
             currentTime -= waitTime;
             GameObject spawned = Instantiate(spawnPrefab, spawnTransform.position, spawnTransform.rotation);
+            spawned.GetComponent<Sprite>().Speed = new Vector3(0.0f, 5.0f, 0.0f);
             spawnedItems.Add(spawned);
-            Destroy(spawned, 5.0f);         //Long enough to be off camera to destroy itself
+            waitTime = Random.Range(1.0f, 5.0f);
         }
+
+
     }
 }

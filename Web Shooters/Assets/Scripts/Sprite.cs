@@ -4,7 +4,9 @@ using UnityEngine;
 public class Sprite : MonoBehaviour
 {
     Rigidbody2D rigidbody;
-    [SerializeField] Vector3 speed;
+    Vector3 speed;
+
+    public Vector3 Speed { get { return speed; } set {  speed = value; } }
 
     void Start()
     {
@@ -12,14 +14,4 @@ public class Sprite : MonoBehaviour
         rigidbody.linearVelocity = speed;
     }
 
-
-    //destroys itself if it collides with the web -Has issues with it
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Web"))
-        {
-            Debug.Log("Collided with the web");
-            Destroy(this.gameObject);
-        }
-    }
 }
