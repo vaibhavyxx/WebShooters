@@ -19,20 +19,6 @@ public class SpriteManager : MonoBehaviour
     public float waitTime = 10.0f;
     float currentTime;
 
-    //gives the access for spawning items
-    public List<GameObject> SpawnedItems
-    {
-        get { return spawnedItems; }
-    }
-
-    //Removes an item from the list
-    public void RemoveItem(int index)
-    {
-        GameObject item = SpawnedItems[index];
-        Destroy(item);
-        spawnedItems.RemoveAt(index);
-    }
-
     //Creates the list and starts the time
     void Start()
     {
@@ -62,7 +48,7 @@ public class SpriteManager : MonoBehaviour
         {
             currentTime -= waitTime;
             GameObject spawned = Instantiate(spawnPrefab, spawnTransform.position, spawnTransform.rotation);
-            spawned.GetComponent<Sprite>().Speed = new Vector3(0.0f, 5.0f, 0.0f);
+            spawned.GetComponent<NPCSprite>().Speed = new Vector3(0.0f, 5.0f, 0.0f);
             spawnedItems.Add(spawned);
             waitTime = Random.Range(1.0f, 5.0f);
         }
